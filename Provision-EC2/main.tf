@@ -203,8 +203,11 @@ resource "aws_instance" "myapp-server" {
     tags = {
         Name = "${var.environment}-myapp-server"
     }
-}
 
+    # Commands to execute on the EC2 instance
+        # Install docker and run nginx container
+    user_data = file("ec2-entry-script.sh")
+}
 
 
 
